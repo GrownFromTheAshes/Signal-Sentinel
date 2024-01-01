@@ -1,0 +1,63 @@
+{
+  "name": "signal-sentinel",
+  "productName": "signal-sentinel",
+  "version": "0.1.0",
+  "description": "A program designed to check APIs against conditions, and run actions in response.",
+  "main": ".webpack/main",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "lint": "eslint --ext .ts,.tsx ."
+  },
+  "keywords": [],
+  "author": {
+    "name": "Sean O'Brien / Designed In Ash"
+  },
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.6",
+    "@babel/preset-react": "^7.23.3",
+    "@electron-forge/cli": "^7.2.0",
+    "@electron-forge/maker-deb": "^7.2.0",
+    "@electron-forge/maker-rpm": "^7.2.0",
+    "@electron-forge/maker-squirrel": "^7.2.0",
+    "@electron-forge/maker-zip": "^7.2.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.2.0",
+    "@electron-forge/plugin-webpack": "^7.2.0",
+    "@electron/asar": "^3.2.8",
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "@vercel/webpack-asset-relocator-loader": "^1.7.3",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.8.1",
+    "electron": "28.1.0",
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-import": "^2.29.1",
+    "fork-ts-checker-webpack-plugin": "^7.3.0",
+    "node-loader": "^2.0.0",
+    "sass": "^1.69.6",
+    "sass-loader": "^13.3.3",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "~4.5.4"
+  },
+  "dependencies": {
+    "@fontsource/roboto": "^5.0.8",
+    "@mui/icons-material": "^5.15.2",
+    "@mui/material": "^5.15.2",
+    "@reduxjs/toolkit": "^2.0.1",
+    "electron-rebuild": "^3.2.9",
+    "electron-squirrel-startup": "^1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.0.4",
+    "react-router-dom": "^6.21.1",
+    "ws": "^8.16.0"
+  }
+}
