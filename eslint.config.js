@@ -1,4 +1,5 @@
 import typescriptPlugin from "@typescript-eslint/eslint-plugin";
+import js from "@eslint/js";
 
 export default [
     {
@@ -31,10 +32,6 @@ export default [
         plugins: {
             typescriptESLinter: typescriptPlugin,
         },
-        rules: {
-
-        }
-
-    }
-
+    },
+    js.configs.recommended,
 ];
