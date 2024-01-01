@@ -3,6 +3,7 @@
   "productName": "signal-sentinel",
   "version": "0.1.0",
   "description": "A program designed to check APIs against conditions, and run actions in response.",
+  "type":"module",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
