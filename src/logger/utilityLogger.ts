@@ -75,7 +75,7 @@ export class UtilityLogger {
 
     // Determines whether the given parameters for a UtilityLogger will pass BEFORE you create it, using the same internal checks.
     // If it fails, returns an error code. Otherwise, returns null.
-    public static verifyWillPass(): boolean {
+    public static verifyParameters(): boolean {
         return true;
     }
 
