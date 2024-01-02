@@ -24,6 +24,7 @@ function validateLoggerParameters(loggerName: string, loggingLevels: LogLevel[],
         results.push(loggingLevelsErrorCode);
     }
     // If loggerOptionsSetup is provided, check them for errors too.
+    // TODO: FINISH Setting this up.
     if (loggerOptionsSetup){
         let loggingOptionsErrorCode = verifyOptions(loggerOptionsSetup);
         results.concat(loggingOptionsErrorCode);
@@ -59,7 +60,7 @@ function verifyLoggingLevels(loggingLevelArray: LogLevel[]): ValidityErrorCode |
 
 function verifyOptions(options: LoggerOptions): ValidityErrorCode[] {
     let results: ValidityErrorCode[] = [];
-    if (!verifyIsOutputting){
+    if (verifyIsOutputting(options) === false){
         results.push(ValidityErrorCode.NoOutput);
     }
     let fileOutputErrorCode = verifyFileOutput(options);
@@ -72,10 +73,13 @@ function verifyOptions(options: LoggerOptions): ValidityErrorCode[] {
 }
 
 function verifyIsOutputting(options: LoggerOptions): boolean {
-    if (!options.logToConsole && !options.logToDevTools && !options.logToFile){
-        return false;
-    }
-    return true;
+    // logToConsole defaults to true if its undefined. The other options here do not.
+    if (
+        options.logToConsole !== false ||
+        options.logToDevTools === true ||
+        options.logToFile === true
+    ){ return true; }
+    return false;
 }
 
 function verifyFileOutput(options: LoggerOptions): ValidityErrorCode | null {
@@ -90,5 +94,20 @@ function verifyTextColors(options: LoggerOptions): ValidityErrorCode | null {
 
 function verifyTextFont(options: LoggerOptions): ValidityErrorCode | null {
     // TODO: Set this up once text font setting is available.
+    return null;
+}
+
+function verifyTextSpacing(options: LoggerOptions): ValidityErrorCode | null {
+    // TODO: Add it to the list of things I need to set up once styling is available.
+    return null;
+}
+
+function verifyBackgroundColor(options: LoggerOptions): ValidityErrorCode | null {
+    // TODO: See above
+    return null;
+}
+
+function verifyBackgroundOpacity(options: LoggerOptions): ValidityErrorCode | null {
+    // TODO: See above.
     return null;
 }
