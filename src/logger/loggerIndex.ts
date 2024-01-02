@@ -1,4 +1,4 @@
-import { LogLevel } from "src/logger/logLevelEnums";
+import { LogLevel } from "src/logger/enumerators/logLevelEnums";
 import { UtilityLogger } from "./utilityLogger";
 
 // Utility class used for setting up UtilityLogger objects and activating them.
