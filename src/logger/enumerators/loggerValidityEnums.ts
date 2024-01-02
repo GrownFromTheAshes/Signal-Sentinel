@@ -1,8 +1,9 @@
 // One of these values is returned when checking if your settings are valid before creating a Utility Logger.
 // If it's valid, return null, not "None".
-export enum validityErrorCode {
+export enum ValidityErrorCode {
     None,
-    NameUndefinedOrBlank,
+    NameUndefined,
+    NameTooShort,
     NameTooLong, // Used if the name is longer than the maximum logger name allowance. 
     LoggingLevelsEmpty,
     OutputPathInvalid,

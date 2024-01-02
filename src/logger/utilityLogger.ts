@@ -1,6 +1,10 @@
 // utilityLogger.ts
 
-import { LogLevel } from "src/logger/enumerators/logLevelEnums";
+import { LogLevel } from "./enumerators/logLevelEnums";
+import { ValidityErrorCode } from "./enumerators/loggerValidityEnums";
+
+// Specifies the maximum logger name length.
+const maximumLoggerNameLength:number = 64;
 
 // Lets you set specific options for the logger. Including any unique styling will
 // cause the logger to appear different from the console's applied styling.
@@ -66,17 +70,46 @@ export class UtilityLogger {
         
     }
 
-    // This method checks the LoggerOptions object provided, sets any invalid options to the default,
-    // queues up an error message, then sends back a valid LoggerOptions object.
-    private validateOptions(options: LoggerOptions): LoggerOptions{
-        //TODO: Actually Validate options
-        return options;
+    // Determines whether the given parameters for a UtilityLogger will pass BEFORE you create it, using the same internal checks.
+    // Returns an array of errors that occured. The array will be empty if all checks passed.
+    public static verifyParameters(loggerName: string, loggingLevels: LogLevel[], loggerOptionsSetup?: LoggerOptions): ValidityErrorCode[] {
+        let results: ValidityErrorCode[] = [];
+        const nameVerificationResult = this.verifyName(loggerName);
+        if (nameVerificationResult !== null){
+            results.push(nameVerificationResult);
+        }
+        if (loggingLevels.length < 1){
+            results.push(ValidityErrorCode.LoggingLevelsEmpty);
+        }
+        const outputVerificationResult = this.verifyOutputPath(loggerOptionsSetup);
+        if (outputVerificationResult !== null){
+            results.push(outputVerificationResult);
+        }
+        
+        return results;
     }
 
-    // Determines whether the given parameters for a UtilityLogger will pass BEFORE you create it, using the same internal checks.
-    // If it fails, returns an error code. Otherwise, returns null.
-    public static verifyParameters(): boolean {
-        return true;
+    private static verifyName(loggerName: string): ValidityErrorCode | null {
+        if (!loggerName){
+            return ValidityErrorCode.NameUndefined;
+        }
+        else if (loggerName.length < 1){
+            return ValidityErrorCode.NameTooShort;
+        }
+        else if (loggerName.length > maximumLoggerNameLength){
+            return ValidityErrorCode.NameTooLong;
+        }
+        return null;
+    }
+
+    private static verifyOutputPath(options: LoggerOptions): ValidityErrorCode | null {
+        //TODO: Check output path here with file handler.
+        return null;
+    }
+    
+    private static verifyTextColor(textColorValue: string): ValidityErrorCode | null {
+        //TODO: Check for colors once that's implemented.
+        return null;
     }
 
 }
