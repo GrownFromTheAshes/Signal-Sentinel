@@ -1,4 +1,3 @@
-// Manages the startup logic.
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,10 +6,12 @@ import { RootState } from './redux/reduxSetup';
 import LoadingStartupPage from './views/startup/LoadingStartupPage';
 import React from 'react';
 
-// FIXME: Add a check for "App" being remounted after startup has finished (so, not just from strict mode),
-// and go to to home page instead of the loading startup page.  
-// TODO: Add a cleanup function for App when it's dismounted during useEffect().
-// This should clear the loaded in settings from memory to avoid them being an issue.
+// App is the entrypoint for the program once it finishes up in the Electron processes.
+// It's responsible for coordinating the lifecycle of the program.
+// This means it handles calling other classes for startup and shutdown.
+// It will also (as needed) coordinate global state issues that don't belong in another component.
+
+//TODO: Working on cleaning this up.
 const App: React.FC = React.memo(() => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
