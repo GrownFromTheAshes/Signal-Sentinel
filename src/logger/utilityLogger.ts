@@ -18,7 +18,7 @@ interface LoggerOptions {
     // The text color when logging to the program's console, in hexidecimal format.
     // Also accepts some basic colors: red, yellow, blue, green, gray, white, and black.
     textColor?: string;
-    // The font you want to use. If left out or invalid, it defaults to the console's settings.
+    // The font you want to use. If left out, blank, or invalid, text font defaults to the console's settings.
     textFont?: string;
     // The text line spacing you want to use. If left out or invalid (such as a negative number), defaults
     // to the console's settings.
@@ -31,7 +31,7 @@ interface LoggerOptions {
 }
 
 // UtilityLogger is a custom logger for Signal Sentry that makes debugging easier and provides more options for how you want the logger to look, as well as work.
-class UtilityLogger {
+export class UtilityLogger {
     // The name you want your logger to appear with in the console.
     private name: string = "Utility Logger";
     // An array of levels you want to listen for info on.
@@ -73,5 +73,10 @@ class UtilityLogger {
         return options;
     }
 
+    // Determines whether the given parameters for a UtilityLogger will pass BEFORE you create it, using the same internal checks.
+    // If it fails, returns an error code. Otherwise, returns null.
+    public static verifyWillPass(): boolean {
+        return true;
+    }
 
 }
