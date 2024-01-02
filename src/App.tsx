@@ -1,9 +1,3 @@
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { ran } from './redux/reducers/startupReducer';
-import { RootState } from './redux/reduxSetup';
-import LoadingStartupPage from './views/startup/LoadingStartupPage';
 import React from 'react';
 
 // App is the entrypoint for the program once it finishes up in the Electron processes.
@@ -13,6 +7,20 @@ import React from 'react';
 
 //TODO: Working on cleaning this up.
 const App: React.FC = React.memo(() => {
+  
+  return null;
+});
+
+// Simulates a loading delay for testing purposes.
+async function simulateLoadingDelay(seconds:number): Promise<void>  {
+  // Convert from seconds to milliseconds.  
+  const totalTime:number = seconds * 1000;
+  await new Promise(resolve => setTimeout(resolve, totalTime));
+}
+
+export default App;
+
+/*
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const hasStarted = useSelector((state: RootState) => state.hasEntryRun.hasStarted);
@@ -33,11 +41,4 @@ const App: React.FC = React.memo(() => {
   
   // Render the loading screen and update it until finished.
   return <LoadingStartupPage />;
-});
-
-// Simulates a loading delay for testing purposes.
-async function simulateLoadingDelay(): Promise<void>  {
-  await new Promise(resolve => setTimeout(resolve, 2000));
-}
-
-export default App;
+*/
