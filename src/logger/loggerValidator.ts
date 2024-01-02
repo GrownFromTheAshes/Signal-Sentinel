@@ -59,6 +59,36 @@ function verifyLoggingLevels(loggingLevelArray: LogLevel[]): ValidityErrorCode |
 
 function verifyOptions(options: LoggerOptions): ValidityErrorCode[] {
     let results: ValidityErrorCode[] = [];
-    
+    if (!verifyIsOutputting){
+        results.push(ValidityErrorCode.NoOutput);
+    }
+    let fileOutputErrorCode = verifyFileOutput(options);
+    if (fileOutputErrorCode !== null){
+        results.push(fileOutputErrorCode);
+    }
+
+
     return results;
+}
+
+function verifyIsOutputting(options: LoggerOptions): boolean {
+    if (!options.logToConsole && !options.logToDevTools && !options.logToFile){
+        return false;
+    }
+    return true;
+}
+
+function verifyFileOutput(options: LoggerOptions): ValidityErrorCode | null {
+    // TODO: Set up this check with proper error codes once the file writer is in place. 
+    return null;
+}
+
+function verifyTextColors(options: LoggerOptions): ValidityErrorCode | null {
+    // TODO: Set this up once text colors are available.
+    return null;
+}
+
+function verifyTextFont(options: LoggerOptions): ValidityErrorCode | null {
+    // TODO: Set this up once text font setting is available.
+    return null;
 }

@@ -7,8 +7,9 @@ export enum ValidityErrorCode {
     NameTooLong, // Used if the name is longer than the maximum logger name allowance. 
     LoggingLevelsUndefined,
     LoggingLevelsEmpty,
-    OutputPathInvalid,
-    OutputPathUsedFile, // Called when the "outputPath" gives a specific file. This is not allowed unless "allowOverwritting" is true.
+    NoOutput,
+    FilePathInvalid,
+    FilePathExistingFile, // Called when the "outputPath" gives a specific file. This is not allowed unless "allowOverwritting" is true.
     TextColorWordInvalid, // Used when the invalid text does not begin with "#".
     TextColorHexInvalid,
     TextFontNotSpecified, // Returned when the text font option is present, but either a blank value or 'undefined' is given.
