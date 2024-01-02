@@ -1,6 +1,6 @@
-import HomePage from '../containers/HomePage'
-import RootPage from '../containers/root/RootPage';
-import ErrorRootPage from '../containers/root/ErrorRootPage'
+import HomePage from '../views/home/HomePage'
+import RootPage from '../views/error/RootPage';
+import ErrorRootPage from '../views/error/ErrorRootPage'
 import ErrorStartupPage from '../containers/startup/ErrorStartupPage';
 import React from 'react';
 import { RouteObject } from 'react-router-dom';
