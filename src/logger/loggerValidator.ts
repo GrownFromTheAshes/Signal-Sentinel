@@ -12,7 +12,7 @@ const maximumLoggerNameLength:number = 64;
 
 // Checks the validity of your logging parameters. Returns an array of errors found.
 // Returned array is empty if no errors are found.
-function validateLoggerParameters(loggerName: string, loggingLevels: LogLevel[], loggerOptionsSetup?: LoggerOptions): ValidityErrorCode[]{
+export default function validateLoggerParameters(loggerName: string, loggingLevels: LogLevel[], loggerOptionsSetup?: LoggerOptions): ValidityErrorCode[]{
     let results: ValidityErrorCode[] = [];
     let nameErrorCode = verifyName(loggerName);
     let loggingLevelsErrorCode = verifyLoggingLevels(loggingLevels);

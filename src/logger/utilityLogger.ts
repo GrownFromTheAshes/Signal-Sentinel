@@ -1,6 +1,6 @@
-// utilityLogger.ts
-
 import { LogLevel } from "./enumerators/logLevelEnums";
+import { ValidityErrorCode } from "./enumerators/loggerValidityEnums";
+import validator  from "./loggerValidator";
 
 // Lets you set specific options for the logger. Including any unique styling will
 // cause the logger to appear different from the console's applied styling.
@@ -53,17 +53,16 @@ export class UtilityLogger {
     // Create a basic logger. You set up the rest of the options
     // using the "options" method.
     constructor (loggerName: string, loggingLevels: LogLevel[], loggerOptionsSetup?: LoggerOptions){
-        // TODO: Make sure loggerName is valid (under 64 characters) and 
-        // the loggingLevels are valid.
-        if (loggerName.length < 65){
-            this.name = loggerName;
-        } else {
-            // TODO: Throw an error in the logger after startup when the
-            // logger name is too long.
-            this.name = "LoggerNameWasTooLong"
+        const problems: ValidityErrorCode[] = validator(loggerName, loggingLevels, loggerOptionsSetup);
+        // If there's no problems, go ahead and set up the logger.
+        if (problems === undefined || problems.length < 1){
+            this.name = loggerName,
+            this.logLevels = loggingLevels;
+            this.options = loggerOptionsSetup;
         }
-        this.logLevels = loggingLevels;
-        
+        // If there's problems, then we gotta solve them first.
+        // TODO: Handle problems
+        this.name = "ERRORName",
+        this.logLevels = [LogLevel.Info];
     }
-
 }
