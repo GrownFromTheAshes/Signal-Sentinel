@@ -1,7 +1,7 @@
 import HomePage from '../views/home/HomePage'
 import RootPage from '../views/error/RootPage';
 import ErrorRootPage from '../views/error/ErrorRootPage'
-import ErrorStartupPage from '../containers/startup/ErrorStartupPage';
+import ErrorStartupPage from '../views/startup/ErrorStartupPage';
 import React from 'react';
 import { RouteObject } from 'react-router-dom';
 import App from '../App';

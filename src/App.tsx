@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ran } from './redux/reducers/startupReducer';
 import { RootState } from './redux/reduxSetup';
-import LoadingStartupPage from './containers/startup/LoadingStartupPage';
+import LoadingStartupPage from './views/startup/LoadingStartupPage';
 import React from 'react';
 
 // FIXME: Add a check for "App" being remounted after startup has finished (so, not just from strict mode),
