@@ -1,9 +1,8 @@
 import React from 'react';
 
 // App is the entrypoint for the program once it finishes up in the Electron processes.
-// It's responsible for coordinating the lifecycle of the program.
-// This means it handles calling other classes for startup and shutdown.
-// It will also (as needed) coordinate global state issues that don't belong in another component.
+// It's responsible for applying the global styles to the program, and re-rendering
+// once those styles are changed in the settings.
 
 //TODO: Working on cleaning this up.
 const App: React.FC = React.memo(() => {
@@ -11,13 +10,14 @@ const App: React.FC = React.memo(() => {
   return null;
 });
 
+/*
 // Simulates a loading delay for testing purposes.
 async function simulateLoadingDelay(seconds:number): Promise<void>  {
   // Convert from seconds to milliseconds.  
   const totalTime:number = seconds * 1000;
   await new Promise(resolve => setTimeout(resolve, totalTime));
 }
-
+*/
 export default App;
 
 /*
