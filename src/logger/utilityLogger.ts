@@ -1,14 +1,10 @@
 // utilityLogger.ts
 
 import { LogLevel } from "./enumerators/logLevelEnums";
-import { ValidityErrorCode } from "./enumerators/loggerValidityEnums";
-
-// Specifies the maximum logger name length.
-const maximumLoggerNameLength:number = 64;
 
 // Lets you set specific options for the logger. Including any unique styling will
 // cause the logger to appear different from the console's applied styling.
-interface LoggerOptions {
+export interface LoggerOptions {
     // Whether the logger should log to the program console.
     logToConsole?: boolean;
     // Whether the logger should log to the dev tools console.
@@ -68,48 +64,6 @@ export class UtilityLogger {
         }
         this.logLevels = loggingLevels;
         
-    }
-
-    // Determines whether the given parameters for a UtilityLogger will pass BEFORE you create it, using the same internal checks.
-    // Returns an array of errors that occured. The array will be empty if all checks passed.
-    public static verifyParameters(loggerName: string, loggingLevels: LogLevel[], loggerOptionsSetup?: LoggerOptions): ValidityErrorCode[] {
-        let results: ValidityErrorCode[] = [];
-        const nameVerificationResult = this.verifyName(loggerName);
-        if (nameVerificationResult !== null){
-            results.push(nameVerificationResult);
-        }
-        if (loggingLevels.length < 1){
-            results.push(ValidityErrorCode.LoggingLevelsEmpty);
-        }
-        const outputVerificationResult = this.verifyOutputPath(loggerOptionsSetup);
-        if (outputVerificationResult !== null){
-            results.push(outputVerificationResult);
-        }
-        
-        return results;
-    }
-
-    private static verifyName(loggerName: string): ValidityErrorCode | null {
-        if (!loggerName){
-            return ValidityErrorCode.NameUndefined;
-        }
-        else if (loggerName.length < 1){
-            return ValidityErrorCode.NameTooShort;
-        }
-        else if (loggerName.length > maximumLoggerNameLength){
-            return ValidityErrorCode.NameTooLong;
-        }
-        return null;
-    }
-
-    private static verifyOutputPath(options: LoggerOptions): ValidityErrorCode | null {
-        //TODO: Check output path here with file handler.
-        return null;
-    }
-    
-    private static verifyTextColor(textColorValue: string): ValidityErrorCode | null {
-        //TODO: Check for colors once that's implemented.
-        return null;
     }
 
 }

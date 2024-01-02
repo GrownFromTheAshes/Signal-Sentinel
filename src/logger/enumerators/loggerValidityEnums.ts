@@ -5,6 +5,7 @@ export enum ValidityErrorCode {
     NameUndefined,
     NameTooShort,
     NameTooLong, // Used if the name is longer than the maximum logger name allowance. 
+    LoggingLevelsUndefined,
     LoggingLevelsEmpty,
     OutputPathInvalid,
     OutputPathUsedFile, // Called when the "outputPath" gives a specific file. This is not allowed unless "allowOverwritting" is true.

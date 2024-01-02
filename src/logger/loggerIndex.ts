@@ -1,4 +1,4 @@
-import { LogLevel } from "src/logger/enumerators/logLevelEnums";
+import { LogLevel } from "./enumerators/logLevelEnums";
 import { UtilityLogger } from "./utilityLogger";
 
 // Utility class used for setting up UtilityLogger objects and activating them.
@@ -14,6 +14,6 @@ function CreateLogger(loggerName: string, loggingLevels: LogLevel[]): UtilityLog
 
 // Uses utilityLogger's "verifyIntegrity" function to ensure everything is valid.
 function VerifyLoggerSetup(loggerName: string, loggingLevels: LogLevel[]): boolean {
-    UtilityLogger.verifyWillPass();
+    
     return true;
 }
