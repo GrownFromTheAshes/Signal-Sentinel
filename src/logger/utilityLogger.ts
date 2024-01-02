@@ -1,10 +1,10 @@
-// utilityLogger.ts
-
-import { LogLevel } from "src/enumerators/logLevelEnums";
+import { LogLevel } from "./enumerators/logLevelEnums";
+import { ValidityErrorCode } from "./enumerators/loggerValidityEnums";
+import validator  from "./loggerValidator";
 
 // Lets you set specific options for the logger. Including any unique styling will
 // cause the logger to appear different from the console's applied styling.
-interface LoggerOptions {
+export interface LoggerOptions {
     // Whether the logger should log to the program console.
     logToConsole?: boolean;
     // Whether the logger should log to the dev tools console.
@@ -18,7 +18,7 @@ interface LoggerOptions {
     // The text color when logging to the program's console, in hexidecimal format.
     // Also accepts some basic colors: red, yellow, blue, green, gray, white, and black.
     textColor?: string;
-    // The font you want to use. If left out or invalid, it defaults to the console's settings.
+    // The font you want to use. If left out, blank, or invalid, text font defaults to the console's settings.
     textFont?: string;
     // The text line spacing you want to use. If left out or invalid (such as a negative number), defaults
     // to the console's settings.
@@ -31,7 +31,7 @@ interface LoggerOptions {
 }
 
 // UtilityLogger is a custom logger for Signal Sentry that makes debugging easier and provides more options for how you want the logger to look, as well as work.
-class UtilityLogger {
+export class UtilityLogger {
     // The name you want your logger to appear with in the console.
     private name: string = "Utility Logger";
     // An array of levels you want to listen for info on.
@@ -53,25 +53,16 @@ class UtilityLogger {
     // Create a basic logger. You set up the rest of the options
     // using the "options" method.
     constructor (loggerName: string, loggingLevels: LogLevel[], loggerOptionsSetup?: LoggerOptions){
-        // TODO: Make sure loggerName is valid (under 64 characters) and 
-        // the loggingLevels are valid.
-        if (loggerName.length < 65){
-            this.name = loggerName;
-        } else {
-            // TODO: Throw an error in the logger after startup when the
-            // logger name is too long.
-            this.name = "LoggerNameWasTooLong"
+        const problems: ValidityErrorCode[] = validator(loggerName, loggingLevels, loggerOptionsSetup);
+        // If there's no problems, go ahead and set up the logger.
+        if (problems === undefined || problems.length < 1){
+            this.name = loggerName,
+            this.logLevels = loggingLevels;
+            this.options = loggerOptionsSetup;
         }
-        this.logLevels = loggingLevels;
-        
+        // If there's problems, then we gotta solve them first.
+        // TODO: Handle problems
+        this.name = "ERRORName",
+        this.logLevels = [LogLevel.Info];
     }
-
-    // This method checks the LoggerOptions object provided, sets any invalid options to the default,
-    // queues up an error message, then sends back a valid LoggerOptions object.
-    private validateOptions(options: LoggerOptions): LoggerOptions{
-        //TODO: Actually Validate options
-        return options;
-    }
-
-
 }
