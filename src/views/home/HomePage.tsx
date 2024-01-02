@@ -1,5 +1,5 @@
 import React from 'react';
-import Console from '../console/ConsoleComponent';
+import Console from '../../components/ConsoleComponent';
 
 const HomePage = () => {
     return (

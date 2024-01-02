@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../index.scss';
+import '../styles/components/console'
 
 // NOTE: This just creates a console component. The console doesn't do anything yet.
 const Console = () => {
