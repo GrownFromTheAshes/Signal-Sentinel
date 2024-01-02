@@ -32,7 +32,7 @@ import { createRoot } from 'react-dom/client';
 import { RouterProvider, createHashRouter } from 'react-router-dom';
 import '.styles/index.scss';
 import routes from "./navigation/RouteConfig";
-import store from './startup/reduxSetup';
+import store from './redux/reduxSetup';
 
 // Set up the router. This also mounts "App.tsx" when activated since the component is attached to the root route.
 const programRouter = createHashRouter(routes, {

@@ -1,0 +1,17 @@
+// TEMPORARY STANDARD CSS CODE as I transition from styled-components
+// I'll clean this up later!
+.console-wrapper {
+    height: 300px;
+    width: 400px;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+  
+    .console-line {
+      padding: 5px;
+      white-space: pre-wrap;
+    }
+  }
+  
+  .input-wrapper {
+    margin-top: 10px;
+  }

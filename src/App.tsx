@@ -2,8 +2,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ran } from './reducers/startupReducer';
-import { RootState } from './startup/reduxSetup';
+import { ran } from './redux/reducers/startupReducer';
+import { RootState } from './redux/reduxSetup';
 import LoadingStartupPage from './containers/startup/LoadingStartupPage';
 import React from 'react';
 
