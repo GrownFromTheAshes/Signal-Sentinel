@@ -1,6 +1,6 @@
 // utilityLogger.ts
 
-import { LogLevel } from "src/enumerators/logLevelEnums";
+import { LogLevel } from "src/logger/logLevelEnums";
 
 // Lets you set specific options for the logger. Including any unique styling will
 // cause the logger to appear different from the console's applied styling.
