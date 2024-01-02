@@ -30,7 +30,7 @@ import React, { StrictMode } from 'react';
 import { Provider } from 'react-redux';
 import { createRoot } from 'react-dom/client';
 import { RouterProvider, createHashRouter } from 'react-router-dom';
-import './index.scss';
+import '.styles/index.scss';
 import routes from "./navigation/RouteConfig";
 import store from './startup/reduxSetup';
 
