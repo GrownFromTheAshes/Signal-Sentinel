@@ -6,7 +6,7 @@ declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
 // Creates a "dev mode" key to use style-loader. Not used in production for security reasons.
-// TODO: Set this so it's not used in production builds (style-loader is only used in development builds).
+// TODO: Before making the first production build, set this so it's not used in production builds (style-loader is only used in development builds).
 const nonce = 'devModeOnly';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
